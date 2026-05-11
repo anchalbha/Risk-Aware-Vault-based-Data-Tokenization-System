@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk-Aware Vault Tokenizer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+        textarea, input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        textarea {
+            resize: vertical;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: #dc3545;
+            background-color: #f8d7da;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+        .examples {
+            text-align: left;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Data Tokenization Vault</h2>
+    <p>Enter text below to analyze its risk level and tokenize it securely.</p>
+
+    {% if error %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <!-- Form submits data to the /predict Flask route -->
+    <form action="/predict" method="POST">
+        <input type="email" name="user_email" placeholder="Enter your email" required>
+        <textarea name="user_input" rows="4" placeholder="Enter text here..."></textarea>
+        <button type="submit">Analyze Data</button>
+    </form>
+    
+    <div class="examples">
+        <strong>Try these examples:</strong>
+        <ul style="margin-top: 10px; margin-bottom: 0; padding-left: 20px;">
+            <li><strong>High Risk:</strong> My credit card is 4111-2222-3333-4444</li>
+            <li><strong>Medium Risk:</strong> contact_me@example.com</li>
+            <li><strong>Low Risk:</strong> I am learning Python with Flask!</li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Result - Vault Tokenizer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+        .result-box {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        .label {
+            font-weight: bold;
+            color: #555;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+        .value {
+            margin-bottom: 20px;
+            word-break: break-all;
+            background: white;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #eee;
+        }
+        .risk-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 4px;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .risk-HIGH {
+            background-color: #dc3545; /* Red */
+        }
+        .risk-MEDIUM {
+            background-color: #ffc107; /* Yellow */
+            color: #333;
+        }
+        .risk-LOW {
+            background-color: #28a745; /* Green */
+        }
+        .btn-back {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            width: 100%;
+            box-sizing: border-box;
+            transition: background-color 0.3s;
+        }
+        .btn-back:hover {
+            background-color: #5a6268;
+        }
+        .description {
+            font-size: 13px;
+            color: #666;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        .tokenized-value {
+            font-family: monospace; 
+            background: #e9ecef; 
+            padding: 15px; 
+            border-radius: 4px; 
+            font-size: 16px;
+            color: #333;
+            border: 1px solid #ccc;
+            word-break: break-all;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Analysis Result</h2>
+    
+    <div class="result-box">
+        <!-- Show Original Input -->
+        <span class="label">Entered Data:</span>
+        <div class="value">{{ original_data }}</div>
+        
+        <!-- Show Predicted Risk Status -->
+        <span class="label">Predicted Risk Level:</span>
+        <div style="margin-bottom: 20px;">
+            <span class="risk-badge risk-{{ risk_level }}">{{ risk_level }}</span>
+            <p class="description">{{ description }}</p>
+        </div>
+
+        <!-- Show Final Tokenized Result -->
+        <span class="label">Tokenized Output:</span>
+        <div class="tokenized-value">
+            {{ tokenized_output }}
+        </div>
+    </div>
+    
+    <a href="/" class="btn-back">Go Back and Analyze Again</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+Flask
+pymongo
+scikit-learn
+pandas
+numpy
+python-dotenv
+cryptography
